@@ -58,8 +58,7 @@ def main(argv=None):
 
     file_cnts = len(list_binary_files('./data/' + data_set + '/'))-1
 
-    label, input = read_raw_images(data_set)
-    output = tf.image.encode_jpeg(input)
+    label_and_data = read_raw_images(data_set)
     sess = tf.Session()
     init = tf.initialize_all_variables()
     sess.run(init)
@@ -67,8 +66,9 @@ def main(argv=None):
     for i in range(0, 100*file_cnts): ## TODO: set proper number of iterations.
         if (i%20==0):
             print("pic : %d" %(i))
-        point = sess.run(label)
-        img = sess.run(output)
+        point, img =  sess.run(label_and_data)
+        img = tf.image.encode_jpeg(img)
+        img = img.eval(session=sess)
         if (point in hansik_labels):
             idx = hansik_labels.index(point)
             filepath = os.path.join(os.path.join('./data', data_set), "%d_%d.jpg" %(point, indexs[idx]))
