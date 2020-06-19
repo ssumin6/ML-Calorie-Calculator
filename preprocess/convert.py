@@ -6,7 +6,7 @@ import config
 FLAGS = tf.app.flags.FLAGS
 
 hansik_labels = [0, 2, 3, 5, 7, 12, 21, 26, 28, 36, 44, 57, 74, 84, 86, 97, 105, 112, 113, 114]
-indexs = [0 for i in hansik_labels]
+# indexs = [0 for i in hansik_labels]
 
 def list_binary_files(folder):
     return [folder + '/' + d for d in os.listdir(folder)
@@ -14,7 +14,7 @@ def list_binary_files(folder):
 
 
 def read_raw_images(data_set):
-    dirs = './data/' + data_set + '/'
+    dirs = './data/'
     filename = list_binary_files(dirs)
 
     filename_queue = tf.train.string_input_producer(filename)
@@ -52,17 +52,18 @@ def read_raw_images(data_set):
 
 
 def main(argv=None):
-    data_set = 'validation' 
+    # data_set = 'validation' 
     # data_set = 'test'
-    # data_set = 'train'
+    data_set = 'train'
 
-    file_cnts = len(list_binary_files('./data/' + data_set + '/'))-1
+    file_cnts = len(list_binary_files('./data/'))-1
 
     label_and_data = read_raw_images(data_set)
     sess = tf.Session()
     init = tf.initialize_all_variables()
     sess.run(init)
     tf.train.start_queue_runners(sess=sess)
+    idx = 0
     for i in range(0, 100*file_cnts): ## TODO: set proper number of iterations.
         if (i%20==0):
             print("pic : %d" %(i))
@@ -70,9 +71,8 @@ def main(argv=None):
         img = tf.image.encode_jpeg(img)
         img = img.eval(session=sess)
         if (point in hansik_labels):
-            idx = hansik_labels.index(point)
-            filepath = os.path.join(os.path.join('./data', data_set), "%d_%d.jpg" %(point, indexs[idx]))
-            indexs[idx] += 1
+            filepath = os.path.join('./images', "%d.jpg" %(idx))
+            idx += 1
             with open(filepath, "w+") as fd: 
                 fd.write(img)
                 fd.close()
