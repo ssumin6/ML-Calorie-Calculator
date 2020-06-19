@@ -7,8 +7,7 @@ We modified convert.py and config.py from [1] to save .jpg from huge .bin files 
 Our team member Jimin Koo hand crafted bounding box by using [2].
 
 bound_process.py is used for specific annotation setting for yolov3. 
-[2] and yolov3 have different annotation for bounding box, so we have to change every annotation file.
-labels.py is used to create 'train.txt' and 'test.txt' to specify which file is used in training and testing process.
+BBox-Label Tool[2] and yolov3 have different annotation for bounding box, so we have to change every annotation file.
 
 All codes used in preprocessing is in /preprocess.
 
