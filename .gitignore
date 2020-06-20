@@ -92,3 +92,5 @@ ENV/
 # Dataset
 data/
 images/
+validation/
+train/

@@ -9,7 +9,7 @@ change line 12, 14, 17, 20, 21 for your dataset setting.
 # folders = ['000','002','003','005','007','012','021','026','028','036','044', \
         # '057','074','084','086','097','105','112','113','114', '888', '099']
 
-folders = [i for i in range(20)]+['888','099']
+folders = [i for i in range(20)]#+['888','099']
 
 labels = [0, 2, 3, 5, 7, 12, 21, 26, 28, 36, 44, 57, 74, 84, 86, 97, 105, 112, 113, 114, 120]
 
@@ -33,7 +33,7 @@ Excluding label, all values should be float between 0<value<1.
 '''
 
 for folder in folders:
-    path = os.path.join(os.path.join("../Downloads/dataset", main_folder), folder)
+    path = os.path.join(os.path.join("../Download/dataset", main_folder), str(folder))
     print("path %s start" %path)
     for file in os.listdir(path):
         
@@ -48,12 +48,12 @@ for folder in folders:
                 # tmp [label, topleftX, topleftY, bottom X, bottom Y]
                 tmp = list(map(int, tmp))
 
-                center_x = ((tmp[1]+tmp[3])/2)/image_width
-                center_y = ((tmp[2]+tmp[4])/2)/image_height
+                center_x = ((tmp[0]+tmp[2])/2)/image_width
+                center_y = ((tmp[1]+tmp[3])/2)/image_height
 
                 width = (tmp[3] - tmp[1])/image_width
-                height = (tmp[2] - tmp[4])/image_height
-                tmp2 = "%d %0.6f %0.6f %0.6f %0.6f" %(labels.index(tmp[0]), center_x, center_y, width, height)
+                height = (tmp[2] - tmp[0])/image_height
+                tmp2 = "%d %0.6f %0.6f %0.6f %0.6f" %(labels.index(tmp[4]), center_x, center_y, width, height)
                 lines.append(tmp2)
             f.close()
 
