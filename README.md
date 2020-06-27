@@ -1,14 +1,31 @@
-![Darknet Logo](http://pjreddie.com/media/files/darknet-black-small.png)
+# ITM_project
+ITM Object Detection project : Calculate Food Calorie
 
-# Darknet #
-Darknet is an open source neural network framework written in C and CUDA. It is fast, easy to install, and supports CPU and GPU computation.
+## DATA Preprocessing 
+Our team created an Object Detection dataset based on Classification dataset, "FoodDataSet"[1]
+We modified convert.py and config.py from [1] to save .jpg from huge .bin files for selected 21 labels.
+Our team member Jimin Koo hand crafted bounding box by using [2].
 
-Yolo v4 paper: https://arxiv.org/abs/2004.10934
+bound_process.py is used for specific annotation setting for yolov3. 
+BBox-Label Tool[2] and yolov3 have different annotation for bounding box, so we have to change every annotation file.
 
-Yolo v4 source code: https://github.com/AlexeyAB/darknet
+All codes used in preprocessing is in /preprocess.
 
-Useful links: https://medium.com/@alexeyab84/yolov4-the-most-accurate-real-time-neural-network-on-ms-coco-dataset-73adfd3602fe?source=friends_link&sk=6039748846bbcf1d960c3061542591d7
+setting
+- Tensorflow 1
 
-For more information see the [Darknet project website](http://pjreddie.com/darknet).
+Reference
+[1] https://github.com/corona10/FoodDataSet
+[2] https://github.com/jxgu1016/BBox-Label-Tool-Multi-Class
 
-For questions or issues please use the [Google Group](https://groups.google.com/forum/#!forum/darknet).
+## Model Training
+YOLOv3-tiny.
+
+setting
+- used 2 GPU. 
+- CuDNN=1
+
+Reference
+[1] 
+
+## Web Application
