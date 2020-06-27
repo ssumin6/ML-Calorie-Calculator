@@ -1,6 +1,9 @@
 # ITM_project
 ITM Object Detection project : Calculate Food Calorie
 
+This is demo link 
+https://www.youtube.com/watch?v=aUYLaG7vMmk
+
 ## DATA Preprocessing 
 Our team created an Object Detection dataset based on Classification dataset, "FoodDataSet"[1]
 We modified convert.py and config.py from [1] to save .jpg from huge .bin files for selected 21 labels.
