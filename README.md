@@ -1,4 +1,4 @@
-# ITM_project
+# Calorie Calculator
 ITM Object Detection project : Calculate Food Calorie
 
 This is demo link 
