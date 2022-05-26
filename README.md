@@ -30,7 +30,7 @@ You could reproduce our result by following command.
 
 For individual image processing.
 
-    ./darknet detector test data/food.data cfg/yolov3-tiny_obj.cfg final.weights {image_path}enter code here
+    ./darknet detector test data/food.data cfg/yolov3-tiny_obj.cfg final.weights {image_path}
 
 
 ### References
